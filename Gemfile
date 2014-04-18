@@ -42,3 +42,5 @@ gem 'rails_12factor', group: :production
 
 # Twitter Bootstrap
 gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'faker'
