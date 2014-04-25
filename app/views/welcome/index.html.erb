@@ -4,7 +4,10 @@
   <p>Pickle Bloccit is a resource for sharing links with your friends!</p>
   <p>
     <% if current_user %>
-      <%= link_to "Sign out", destroy_user_session_path, class: 'btn btn-primary', method: :delete %>
+      <%= link_to "All Posts", posts_path, class: 'btn btn-primary' %>
+      <% if policy(Post.new).create? %>
+        <%= link_to "New Post", new_post_path, class: 'btn btn-success' %>
+      <% end %>
     <% else %>
       <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
     <% end %>
