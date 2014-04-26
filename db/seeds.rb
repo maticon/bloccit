@@ -12,9 +12,19 @@ require 'faker'
 end
 users = User.all
 
+# Create Topics
+15.times do
+  Topic.create(
+    name:        Faker::Lorem.sentence(3),
+    description: Faker::Lorem.paragraph
+  )
+end
+topics = Topic.all
+
 # Create Posts
 50.times do
   Post.create(
+    topic:  topics.sample,
     user:   users.sample,
     title:  Faker::Lorem.sentence,
     body:   Faker::Lorem.paragraph 
@@ -30,16 +40,37 @@ posts = Post.all
   )
 end
 
-# Create My User
-user = User.new(
-  name:     Faker::Name.name,
-  email:    'matt+bloccit@mati.co',
-  password: 'pickle01'
+# Create an admin user
+admin = User.new(
+  name:     'Admin User',
+  email:    'admin@pickle-bloccit.com',
+  password: 'helloworld',
+  role:     'admin'
 )
-user.skip_confirmation!
-user.save
+admin.skip_confirmation!
+admin.save
+
+# Create a moderator
+moderator = User.new(
+  name:     'Moderator User',
+  email:    'moderator@pickle-bloccit.com', 
+  password: 'helloworld',
+  role:     'moderator'
+)
+moderator.skip_confirmation!
+moderator.save
+
+# Create a member
+member = User.new(
+  name:     'Member User',
+  email:    'member@pickle-bloccit.com',
+  password: 'helloworld',
+)
+member.skip_confirmation!
+member.save
 
 puts "Seed finished"
 puts "#{User.count} users created"
+puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
