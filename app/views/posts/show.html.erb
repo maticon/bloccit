@@ -7,10 +7,10 @@
   <% end %></h3>
 </div>
 
-<h2><%= @post.title %></h2>
+<h1><%= @post.title %></h1>
 
 <blockquote>
-  <p><%= @post.body %></p>
+  <p><%= markdown @post.body %></p>
   <footer><%= @post.user.name %></footer>
 </blockquote>
 
