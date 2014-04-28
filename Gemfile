@@ -29,3 +29,6 @@ gem 'devise'
 gem 'figaro'
 gem 'pundit'
 gem 'redcarpet' # Markdown
+gem 'carrierwave' # Image Upload
+gem 'mini_magick' # Image Manipulation
+gem 'fog' # Cloud Services Library / S3 Upload
