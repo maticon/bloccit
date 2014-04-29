@@ -17,6 +17,10 @@
   </footer>
 </blockquote>
 
+<div class="form-group">
+  <p><%= image_tag(@post.image.url) if @post.image? %></p>
+</div>
+
 <table class="table table-hover">
   <% if @post.comments.count > 0 %>
     <tr>
