@@ -21,21 +21,11 @@
   <p><%= image_tag(@post.image.url) if @post.image? %></p>
 </div>
 
-<table class="table table-hover">
-  <% if @post.comments.count > 0 %>
-    <tr>
-      <td></td>
-      <td><strong>Comment<strong></td>
-    </tr>
-    <% @post.comments.each_with_index do |comment, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><em><%= comment.body %></em></td>
-      </tr>
-    <% end %>
-  <% else %>
-    <tr>
-      <td>No Comments</td>
-    </tr>
-  <% end %>
-</table>
+<!-- Comments -->
+<dl class="dl-horizontal">
+  <%= render @comments %>
+</dl>
+
+<div class="col-md-8">
+  <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+</div>

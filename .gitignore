@@ -20,3 +20,6 @@
 
 # Ignore Carrierwave image location
 public/uploads
+
+# DS_Store
+.DS_Store
