@@ -1,7 +1,7 @@
 <div class="vote-arrows pull-left">
-  <%= link_to " ", topic_post_up_vote_path(topic, post), class: 'glyphicon glyphicon-chevron-up'  %>
+  <%= link_to " ", topic_post_up_vote_path(topic, post), class: "glyphicon glyphicon-chevron-up #{(current_user.voted(post) && current_user.voted(post).up_vote?) ? 'voted' : '' }"  %>
   <strong><%= post.points %></strong>
-  <%= link_to " ", topic_post_down_vote_path(topic, post), class: 'glyphicon glyphicon-chevron-down' %>
+  <%= link_to " ", topic_post_down_vote_path(topic, post), class: "glyphicon glyphicon-chevron-down #{(current_user.voted(post) && current_user.voted(post).down_vote?) ? 'voted' : '' }" %>
   <!--<div><%= post.rank %></div>-->
   <%= render partial: 'favorites/favorite', locals: { topic: @topic, post: post } %>
 </div>
